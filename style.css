@@ -300,18 +300,21 @@ footer img:hover{
 .sec3{
     height: 90vh;
     display: flex;
-    justify-content: space-between;
+    position: relative;
     align-items: center;
     
 }
 .sec3 #content{
-    margin-right: 300px;
+    margin-left: 650px ;
+
 }
 
 .sec3-img{
     width: 30%;
     height: 100%;
     z-index: -1;
+    position: absolute;
+    left: 0;
 }
 
 .sec3 #content p{
@@ -661,26 +664,44 @@ margin-top: 20px;
     animation-range: entry 0% cover 40%;
 }
 
+/************************************************************************************************************************************************/
+/* New styles for the hamburger menu */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 
-/* Hide the default checkbox */
+.hidden {
+    display: none;
+}
+
+/***********************************************************************************************************************************************/
+
+/*------------------------------------------------- dark mode slider and styles + actions when checked *------------------------------------------*/
+
+
 #darkModeToggle {
     display: none;
 }
 
-/* Style the label as the toggle */
+
 .toggle {
     display: inline-block;
     width: 60px;
     height: 30px;
     background-color: #ccc;
     border-radius: 30px;
-    position: relative;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 50px;
+    margin-top: 20px;
+    position: fixed;
+    z-index: 999;
 }
 
-/*------------------------------------------------- dark mode slider and styles + actions when checked *------------------------------------------*/
+
 .toggle::after {
     content: "";
     position: absolute;
@@ -693,21 +714,13 @@ margin-top: 20px;
     transition: transform 0.3s;
 }
 
-/* Change styles when checked */
+
 #darkModeToggle:checked + .toggle {
     background-color: #4caf50; 
 }
 
 #darkModeToggle:checked + .toggle::after {
     transform: translateX(30px); 
-}
-
-.toggle{
-   
-    margin-left: 50px;
-    margin-top: 20px;
-    position: fixed;
-    z-index: 999;
 }
 
 
@@ -721,9 +734,6 @@ margin-top: 20px;
 #darkModeToggle:checked ~ .dark a {
     color: white;
 }
-
-
-
 
 #darkModeToggle:checked ~ .dark button,input,#btn2 {
     border: 1px white solid;
@@ -795,89 +805,199 @@ margin-top: 20px;
 
 
 /*-----------------------------------------------------------responsivity--------------------------------------------------------------*/
-/* Mobile Styles */
+/*1024*/
+
+@media (max-width: 1024px) {
+   .toggle{
+        margin-left: 680px;
+        position: absolute; 
+        margin-top: 25px;
+   }
+
+   #sec3-bg{
+    height: 100vh;
+    width: 100%;
+   }
+   .sec3 #content{
+    margin-left: 380px ;
+
+}
+    
+}
+
+/* tablette Styles 768px */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
+    .container {
+        max-width: 700px;
+      }
+      nav li{
+        margin-right: 20px;
+      }
 
-    nav li {
-        margin: 10px 0;
-    }
+      .logo{
+        margin: auto;
+      }
 
-    .logo {
-        margin-left: 0;
-        width: 50%;
-    }
+      .toggle{
+        margin-left: 510px;
+      }
 
-    .content {
-        width: 90%;
-        text-align: center;
-    }
-
-    section.container {
-        flex-direction: column;
+      .content{
+        width: 60%;
         height: auto;
+      }
+
+      #content{
+        margin-top: -180px;
+        font-size: small;
+      }
+
+      #description p{
+        margin-bottom: 20px;
+      }
+
+      #bg3{
+        margin-right: 40px;
+      }
+
+      .sec3-img{
+        width: 45%;
+      }
+
+      #darkModeToggle:checked ~ .dark .sec3-img{
+        width: 45%;
     }
 
-    #victor {
-        width: 100%;
-        height: auto;
-        position: relative;
+    .review-card-flex {
+        margin-left: 20px;
+    }
+}
+
+/* phone Styles 435px*/
+@media (max-width: 435px) {
+    .container {
+        max-width: 400px;
+        display: block !important;
+        margin-bottom: 80px;
+      }
+
+      .hamburger {
+        display: block;
     }
 
-    #btn1, #btn2 {
-        width: 100%;
-        margin: 10px 0;
+    #menu {
+            display: none; 
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            transition: max-height 0.3s ease;
+            
     }
 
-    .article {
-        flex-direction: column;
-        align-items: center;
+    #menu li {
+        margin: 10px 5px;
+        text-align: center; 
     }
 
-    #tit1, #tit2 {
-        width: 100%;
-        text-align: center;
+    #menu-toggle:checked + .hamburger + #menu {
+        display: flex;
     }
 
-    #tit1 h4, #tit2 h4 {
-        font-size: 18px;
+    .btn-action{
+        display: none;
     }
-
-    #tit1 p, #tit2 p {
-        font-size: 14px;
+    .logo{
+        margin-left: 100px;
+        width: 25%;
     }
-
-    .sec5 {
-        padding: 20px;
+    #darkModeToggle:checked ~ .dark #menu{
+        background-color: black;
+        border: 1px solid #ccc;
+        color: white;
     }
-
-    #top {
-        flex-direction: column;
-        align-items: center;
+    .toggle{
+        margin-left: 350px;
     }
-
-    #logo {
-        width: 80px;
-    }
-
-    #bottom {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #bottom li {
-        margin: 5px 0;
-    }
-
-    .articles {
-        grid-template-columns: 1fr; /* Stacks articles on small screens */
-    }
-
-    .review-card {
+    .content{
         width: 90%;
-        margin: 10px auto;
+    }
+    .content div{
+        display: flex;
+    }
+    section #victor{
+        opacity: 0.4;
+        width: 100%;
+    }
+    .content h1{
+        font-size:  2.7em; 
+    }
+
+    .cont1{
+        margin-top: 180px;
+        height: 120vh !important;
+    }
+
+    #about-bg{
+        width: 60%;
+        margin-top: 220px;
+        margin-left: 80px;
+    }
+    .sec2{
+        display: block !important;
+        height: 60vh;
+    }
+    #bg3-about{
+        width: 80%;
+        margin-left: 40px;
+    }
+    #description{
+       padding-top: 20px;
+    }
+    .sec3-img{
+        width: 100%;
+    }
+    .sec3{
+        height: 230vh;
+    }
+    .sec3 #content{
+        margin-left: 10px;
+        margin-top: 850px;
+    }
+    footer{
+        margin-top: 60px;
+    }
+
+    #darkModeToggle:checked ~ .dark .sec3-img{
+        width: 100%;
+        margin-top: -1070px;
+    }
+
+    .articles{
+        grid-template-columns: 1fr 1fr;
+    }
+    .products-sec{
+        height: 210vh;
+    }
+    
+    .pk-img{
+        margin-top: 60px;
+    }
+    .review-card-flex{
+        display: block !important;
+        margin-left: 70px;
+    }
+    .reviews-section{
+        height: 80vh;
+    }
+    .review-card{
+        margin-bottom: 15px;
+    }
+    .contact-sec{
+        height: 120vh;
+    }
+    .contact-icn{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
     }
 }
